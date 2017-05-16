@@ -1,148 +1,141 @@
 <html>
 <head>
+<title>Javascript Calculator</title>
 <style>
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
 #calc {
-    height: 430px;
-    width: 272px;
-    background: grey;
-    padding: 80px 8px 8px 8px;
-    border: 2px solid black;
-	border-radius: 10px;
+  height: 430px;
+  width: 272px;
+  position: absolute;
+  margin: 5% -50% 20% 50%;
+  transform: translate(-50%);
+  background: grey;
+  padding: 40px 8px 8px 8px;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 #display {
-	height: 83px;
-	width: 249px;
-	background: black;
-	margin: 0px 2px 13px 2px;
-	padding: 3px;
+  height: 83px;
+  width: 256px;
+  background: black;
+  margin: 0px 2px 13px 2px;
+  padding: 3px;
 }
 
 #entry {
-	height: 50px;
-	width: 100%;
-	color: green;
-	margin-bottom: 2px;
-	text-align: right;
-	font-size: 3em;
+  height: 50px;
+  width: 100%;
+  color: green;
+  margin-bottom: 2px;
+  text-align: right;
+  font-size: 2em;
+  font-family: orbitron;
 }
 
 #hist {
-	height: 15px;
-	width: 100%;
-	color: green;
-	text-align: right;
-}
-
-.clearKey {
-	background: red;
-	color: white;
-}
-
-.functionKey {
-	background: brown;
-	color: yellow;
+  height: 15px;
+  width: 100%;
+  color: green;
+  text-align: right;
+  font-family: orbitron;
 }
 
 .numberKey {
-	background: blue;
-	color: black;
+  color: white;
 }
 
 .calcKey {
-	height: 39px;
-	width: 60px;
-	border-radius: 10px;
-	margin: 2px;
-	padding-top: 21px;
-	text-align: center;
-	display: inline-block;
-	cursor: pointer;
+  background: #255e47;
+  height: 39px;
+  width: 60px;
+  border-radius: 10px;
+  margin: 2px;
+  padding-top: 21px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .plugKey {
-	height: 60px;
-	width: 124px;
-	border-radius: 10px;
-	margin: 2px;
-	text-align: center;
-	display: inline-block;
-	cursor: pointer;
+  height: 52px;
+  width: 124px;
+  border-radius: 10px;
+  margin: 0px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.testClass {background: purple;}
-
-
 </style>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="calc">
   <div id="display">
     <div id="entry">
-	0
-	</div>
+      0
+    </div>
     <div id="hist">
-	</div>
+    </div>
   </div>
   <div id="ac" class="clearKey calcKey">
-  AC
+    AC
   </div>
   <div id="ce" class="clearKey calcKey">
-  CE
+    CE
   </div>
   <div id="divide" class="functionKey calcKey">
-  /
+    /
   </div>
   <div id="multiply" class="functionKey calcKey">
-  X
+    X
   </div>
   <div id="seven" class="numberKey calcKey">
-  7
+    7
   </div>
   <div id="eight" class="numberKey calcKey">
-  8
+    8
   </div>
   <div id="nine" class="numberKey calcKey">
-  9
+    9
   </div>
   <div id="subtract" class="functionKey calcKey">
-  -
+    -
   </div>
   <div id="four" class="numberKey calcKey">
-  4
+    4
   </div>
   <div id="five" class="numberKey calcKey">
-  5
+    5
   </div>
   <div id="six" class="numberKey calcKey">
-  6
+    6
   </div>
   <div id="add" class="functionKey calcKey">
-  +
+    +
   </div>
   <div id="one" class="numberKey calcKey">
-  1
+    1
   </div>
   <div id="two" class="numberKey calcKey">
-  2
+    2
   </div>
   <div id="three" class="numberKey calcKey">
-  3
+    3
   </div>
   <div id="equals" class="functionKey calcKey">
-  =
+    =
   </div>
   <div id="zero" class="numberKey calcKey">
-  0
+    0
   </div>
   <div id="decimal" class="numberKey calcKey">
-  <b>.</b>
+    <b>.</b>
   </div>
   <div id="plug" class="plugKey">
-  coded by </br>
-  <a href="codepen.io/stavo343">Stephen Nierste</a>
+    coded by </br>
+    <a href="codepen.io/stavo343">Stephen Nierste</a>
   </div>
 </div>
 
@@ -153,342 +146,340 @@ var output;
 var hist;
 var answer;
 
-
 $("#ac").on("click", function() {
-	output = undefined;
-	$("#entry").html("0");
-	hist = undefined;
-	$("#hist").html(" ");
-	answer = undefined;
+  output = undefined;
+  $("#entry").html("0");
+  hist = undefined;
+  $("#hist").html(" ");
+  answer = undefined;
 });
 
 $("#ce").on("click", function() {
-	output = undefined;
-	$("#entry").html("0");
+  output = undefined;
+  $("#entry").html("0");
 });
 
 $("#one").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "1";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "1";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "1";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "1";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#two").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "2";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "2";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "2";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "2";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#three").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "3";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "3";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "3";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "3";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#four").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "4";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "4";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "4";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "4";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#five").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "5";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "5";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "5";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "5";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#six").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "6";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "6";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "6";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "6";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#seven").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "7";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "7";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "7";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "7";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#eight").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "8";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "8";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "8";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "8";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#nine").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "9";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "9";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "9";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "9";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#zero").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = "0";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8) {
-			output = output + "0";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = "0";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8) {
+      output = output + "0";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#decimal").on("click", function() {
-	if (answer != undefined && hist == undefined) {
-		answer = undefined;
-		hist = undefined;
-		$("#hist").html(" ");
-	}
-	if (output == undefined) {
-		output = ".";
-		$("#entry").html(output);
-	} else {
-		if (output.length < 8 && output.indexOf(".") == -1) {
-			output = output + ".";
-			$("#entry").html(output);
-		}
-	}
+  if (answer != undefined && hist == undefined) {
+    answer = undefined;
+    hist = undefined;
+    $("#hist").html(" ");
+  }
+  if (output == undefined) {
+    output = ".";
+    $("#entry").html(output);
+  } else {
+    if (output.length < 8 && output.indexOf(".") == -1) {
+      output = output + ".";
+      $("#entry").html(output);
+    }
+  }
 });
 
 $("#add").on("click", function() {
-	if (answer != undefined) {
-		hist = answer + "+";
-		answer = undefined;
-		$("#hist").html(hist);
-		$("#entry").html("0");
-	}
-	if (hist == undefined) {
-		if (output != undefined) {
-			hist = output + "+";
-			$("#hist").html(hist);
-		}
-	} else {
-		if (output != undefined) {
-			hist = hist + output + "+";
-			$("#hist").html(hist);
-		}
-		if (hist.length > 32) {
-			$("#hist").html(hist.slice((hist.length-32), hist.length));
-		} else {
-			$("#hist").html(hist);
-		}
-	}
-	output = undefined;
-	$("#entry").html("0");
+  if (answer != undefined) {
+    hist = answer + "+";
+    answer = undefined;
+    $("#hist").html(hist);
+    $("#entry").html("0");
+  }
+  if (hist == undefined) {
+    if (output != undefined) {
+      hist = output + "+";
+      $("#hist").html(hist);
+    }
+  } else {
+    if (output != undefined) {
+      hist = hist + output + "+";
+      $("#hist").html(hist);
+    }
+    if (hist.length > 20) {
+      $("#hist").html(hist.slice((hist.length - 20), hist.length));
+    } else {
+      $("#hist").html(hist);
+    }
+  }
+  output = undefined;
+  $("#entry").html("0");
 });
 
 $("#subtract").on("click", function() {
-	if (answer != undefined) {
-		hist = answer + "-";
-		answer = undefined;
-		$("#hist").html(hist);
-		$("#entry").html("0");
-	}
-	if (hist == undefined) {
-		if (output != undefined) {
-			hist = output + "-";
-			$("#hist").html(hist);
-		}
-	} else {
-		if (output != undefined) {
-			hist = hist + output + "-";
-			$("#hist").html(hist);
-		}
-		if (hist.length > 32) {
-			$("#hist").html(hist.slice((hist.length-32), hist.length));
-		} else {
-			$("#hist").html(hist);
-		}
-	}
-	output = undefined;
-	$("#entry").html("0");
+  if (answer != undefined) {
+    hist = answer + "-";
+    answer = undefined;
+    $("#hist").html(hist);
+    $("#entry").html("0");
+  }
+  if (hist == undefined) {
+    if (output != undefined) {
+      hist = output + "-";
+      $("#hist").html(hist);
+    }
+  } else {
+    if (output != undefined) {
+      hist = hist + output + "-";
+      $("#hist").html(hist);
+    }
+    if (hist.length > 20) {
+      $("#hist").html(hist.slice((hist.length - 20), hist.length));
+    } else {
+      $("#hist").html(hist);
+    }
+  }
+  output = undefined;
+  $("#entry").html("0");
 });
 
 $("#multiply").on("click", function() {
-	if (answer != undefined) {
-		hist = answer + "*";
-		answer = undefined;
-		$("#hist").html(hist);
-		$("#entry").html("0");
-	}
-	if (hist == undefined) {
-		if (output != undefined) {
-			hist = output + "*";
-			$("#hist").html(hist);
-		}
-	} else {
-		if (output != undefined) {
-			hist = hist + output + "*";
-			$("#hist").html(hist);
-		}
-		if (hist.length > 32) {
-			$("#hist").html(hist.slice((hist.length-32), hist.length));
-		} else {
-			$("#hist").html(hist);
-		}
-	}
-	output = undefined;
-	$("#entry").html("0");
+  if (answer != undefined) {
+    hist = answer + "*";
+    answer = undefined;
+    $("#hist").html(hist);
+    $("#entry").html("0");
+  }
+  if (hist == undefined) {
+    if (output != undefined) {
+      hist = output + "*";
+      $("#hist").html(hist);
+    }
+  } else {
+    if (output != undefined) {
+      hist = hist + output + "*";
+      $("#hist").html(hist);
+    }
+    if (hist.length > 20) {
+      $("#hist").html(hist.slice((hist.length - 20), hist.length));
+    } else {
+      $("#hist").html(hist);
+    }
+  }
+  output = undefined;
+  $("#entry").html("0");
 });
 
 $("#divide").on("click", function() {
-	if (answer != undefined) {
-		hist = answer + "/";
-		answer = undefined;
-		$("#hist").html(hist);
-		$("#entry").html("0");
-	}
-	if (hist == undefined) {
-		if (output != undefined) {
-			hist = output + "/";
-			$("#hist").html(hist);
-		}
-	} else {
-		if (output != undefined) {
-			hist = hist + output + "/";
-			$("#hist").html(hist);
-		}
-		if (hist.length > 32) {
-			$("#hist").html(hist.slice((hist.length-32), hist.length));
-		} else {
-			$("#hist").html(hist);
-		}
-	}
-	output = undefined;
-	$("#entry").html("0");
+  if (answer != undefined) {
+    hist = answer + "/";
+    answer = undefined;
+    $("#hist").html(hist);
+    $("#entry").html("0");
+  }
+  if (hist == undefined) {
+    if (output != undefined) {
+      hist = output + "/";
+      $("#hist").html(hist);
+    }
+  } else {
+    if (output != undefined) {
+      hist = hist + output + "/";
+      $("#hist").html(hist);
+    }
+    if (hist.length > 20) {
+      $("#hist").html(hist.slice((hist.length - 20), hist.length));
+    } else {
+      $("#hist").html(hist);
+    }
+  }
+  output = undefined;
+  $("#entry").html("0");
 });
 
 $("#equals").on("click", function() {
-	//allows a single entry to be stored as an answer
-	if (hist == undefined && output != undefined) {
-		answer = Math.round(output * 100) / 100;
-		$("#entry").html(answer);
-		hist = undefined;
-		$("#hist").html(" ");
-		output = undefined;
-	} else {
-		if (output != undefined) {
-			hist = hist + output;
-			$("#hist").html(" ");
-			answer = Math.round(eval(hist) * 100) / 100;
-			if (answer > 99999999) {
-				var rounded = Math.round(answer);
-				var exponent = rounded.toString().length - 3;
-				var notation = Math.round(rounded / Math.pow(10, exponent)) / 100 + "e" + (rounded.toString().length-1);
-				$("#entry").html(notation);
-			} else {
-				$("#entry").html(answer);
-			}
-			hist = undefined;
-			output = undefined;
-		}
-	}
+  //allows a single entry to be stored as an answer
+  if (hist == undefined && output != undefined) {
+    answer = Math.round(output * 100) / 100;
+    $("#entry").html(answer);
+    hist = undefined;
+    $("#hist").html(" ");
+    output = undefined;
+  } else {
+    if (output != undefined) {
+      hist = hist + output;
+      $("#hist").html(" ");
+      answer = Math.round(eval(hist) * 100) / 100;
+      if (answer > 99999999) {
+        var rounded = Math.round(answer);
+        var exponent = rounded.toString().length - 3;
+        var notation = Math.round(rounded / Math.pow(10, exponent)) / 100 + "e" + (rounded.toString().length - 1);
+        $("#entry").html(notation);
+      } else {
+        $("#entry").html(answer);
+      }
+      hist = undefined;
+      output = undefined;
+    }
+  }
 });
-
 
 </script>
 </body>
